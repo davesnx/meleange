@@ -16,7 +16,7 @@
   (progn
    (system "mkdir dist")
    (system "cp ./public/index.html dist/index.html")
-   (system "cp ./output/src/App.mjs dist/App.mjs")))
+   (system "cp ./output/src/* dist/")))
  (mode
   (promote (until-clean))))
 

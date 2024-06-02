@@ -1,1 +1,2 @@
-Js.log "Hola!"
+let () =
+  Lola.print ()
