@@ -1,0 +1,28 @@
+(dirs :standard \ node_modules)
+
+(alias
+ (name all)
+ (deps
+  (alias_rec after-melange)))
+
+(rule
+ (alias after-melange)
+ (targets
+  (dir dist))
+ (deps
+  (alias_rec meleange)
+  (source_tree public))
+ (action
+  (progn
+   (system "mkdir dist")
+   (system "cp ./public/index.html dist/index.html")
+   (system "cp ./output/src/App.mjs dist/App.mjs")))
+ (mode
+  (promote (until-clean))))
+
+(melange.emit
+ (target output)
+ (alias meleange)
+ (libraries app)
+ (module_systems
+  (es6 mjs)))

@@ -1,0 +1,14 @@
+{
+  "name": "meleange",
+  "version": "0.0.1",
+  "description": "Enter a description of your app here",
+  "scripts": {
+    "build": "dune build",
+    "build-watch": "dune build -w",
+    "serve": "serve dist"
+  },
+  "devDependencies": {
+    "serve": "^14.2.3",
+    "concurrently": "^8.2.2"
+  }
+}
