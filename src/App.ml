@@ -1,2 +1,2 @@
 let () =
-  Lola.print ()
+  Lib.print ()

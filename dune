@@ -1,4 +1,4 @@
-(dirs :standard \ dist node_modules)
+(dirs :standard \ node_modules)
 
 (alias
  (name all)
@@ -16,8 +16,8 @@
   (progn
    (system "mkdir dist")
    (system "cp ./public/* dist/")
-   (system "rsync -r ./output/src/* dist/src")
-   (system "rsync -r ./output/node_modules/* dist/node_modules"))))
+   (system "rsync -r ./output/src/* dist/src/")
+   (system "rsync -r ./output/node_modules/* dist/node_modules/"))))
 
 (melange.emit
  (target output)
