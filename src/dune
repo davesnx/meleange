@@ -2,6 +2,6 @@
  (name app)
  (modes melange)
  (wrapped false)
- (libraries melange.js melange.belt)
+ (libraries melange.js melange.belt melange-json)
  (preprocess
   (pps melange.ppx)))

@@ -1,0 +1,11 @@
+(executable
+ (name generate)
+ (modules generate)
+ (public_name meleange.importmap)
+ (libraries yojson eio eio_main))
+
+(executable
+ (name inject)
+ (modules inject)
+ (public_name meleange.inject)
+ (libraries eio eio_main))

@@ -10,6 +10,7 @@
  (targets
   (dir dist))
  (deps
+  (package meleange)
   (alias_rec meleange)
   (source_tree public))
  (action
@@ -17,7 +18,10 @@
    (system "mkdir dist")
    (system "cp ./public/* dist/")
    (system "rsync -r ./output/src/* dist/src/")
-   (system "rsync -r ./output/node_modules/* dist/node_modules/"))))
+   (system "rsync -r ./output/node_modules/* dist/node_modules/")
+   (system "importmap/generate.exe output dist/app.importmap")
+   (system
+    "importmap/inject.exe dist/app.importmap dist/index.template.html dist/index.html"))))
 
 (melange.emit
  (target output)

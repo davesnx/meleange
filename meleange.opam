@@ -2,20 +2,25 @@
 opam-version: "2.0"
 synopsis: "Enter a synopsis of your app here"
 description: "Enter a description of your app here"
-maintainer: ["Your Name <your.email@gmail.com>"]
-authors: ["Your Name <your.email@gmail.com>"]
+maintainer: ["David Sancho Moreno <dsnxmoreno@gmail.com>"]
+authors: ["David Sancho Moreno <dsnxmoreno@gmail.com>"]
 license: "MIT"
 tags: ["reasonml," "ocaml," "melange"]
-homepage: "https://github.com/your-username/meleange"
-doc: "https://github.com/your-username/meleange"
-bug-reports: "https://github.com/your-username/meleange/issues"
+homepage: "https://github.com/davesnx/meleange"
+doc: "https://github.com/davesnx/meleange"
+bug-reports: "https://github.com/davesnx/meleange/issues"
 depends: [
   "dune" {>= "3.15" & >= "3.14"}
   "melange" {>= "3.0.0-51"}
   "ocaml" {>= "5.1.1"}
   "opam-check-npm-deps"
+  "yojson"
+  "eio"
   "ppx_deriving"
   "reason" {>= "3.11.0"}
+  "melange-json" {with-dev-setup}
+  "ocamlformat" {with-dev-setup}
+  "ocaml-lsp-server" {with-dev-setup}
   "odoc" {with-doc}
 ]
 build: [
@@ -32,4 +37,4 @@ build: [
     "@doc" {with-doc}
   ]
 ]
-dev-repo: "git+https://github.com/your-username/meleange.git"
+dev-repo: "git+https://github.com/davesnx/meleange.git"
