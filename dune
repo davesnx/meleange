@@ -17,10 +17,7 @@
    (system "mkdir dist")
    (system "cp ./public/* dist/")
    (system "rsync -r ./output/src/* dist/src")
-   (system "rsync -r ./output/node_modules/* dist/node_modules")
-   (system "ls -lsha dist/node_modules/melange")))
- (mode
-  (promote (until-clean))))
+   (system "rsync -r ./output/node_modules/* dist/node_modules"))))
 
 (melange.emit
  (target output)

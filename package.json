@@ -5,7 +5,7 @@
   "scripts": {
     "build": "dune build",
     "build-watch": "dune build -w",
-    "serve": "serve dist"
+    "serve": "serve _build/default/dist"
   },
   "devDependencies": {
     "serve": "^14.2.3",
