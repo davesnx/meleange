@@ -51,4 +51,4 @@ serve: ## Run a simple http server from "dist" folder
 
 .PHONY: start
 start: clean ## Run a simple http server from "dist" folder
-	npx concurrently "$(MAKE) build" "npx serve _build/default/dist"
+	npx concurrently "$(MAKE) dev" "npx serve _build/default/dist"
