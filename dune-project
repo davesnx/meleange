@@ -1,11 +1,11 @@
-(lang dune 3.14)
+(lang dune 3.15)
 ; The above stanza specifies the Dune language version being used.
 
 
 ; Declares the use of the Melange compiler with a specific version.
 (using melange 0.1)
 
-; Declares the use of the directory-targets extension, useful for managing 
+; Declares the use of the directory-targets extension, useful for managing
 ; directory-level build targets.
 (using directory-targets 0.1)
 
@@ -37,7 +37,7 @@
  (synopsis "Enter a synopsis of your app here")
  (description "Enter a description of your app here")
 ; Allows the package to be empty, which can be useful during development.
- (allow_empty) 
+ (allow_empty)
 ; Lists the dependencies of the package along with version constraints.
  (depends
   (dune (>= 3.14))

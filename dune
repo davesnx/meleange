@@ -1,4 +1,4 @@
-(dirs :standard \ node_modules)
+(dirs :standard \ dist node_modules)
 
 (alias
  (name all)
@@ -15,8 +15,10 @@
  (action
   (progn
    (system "mkdir dist")
-   (system "cp ./public/index.html dist/index.html")
-   (system "cp ./output/src/* dist/")))
+   (system "cp ./public/* dist/")
+   (system "rsync -r ./output/src/* dist/src")
+   (system "rsync -r ./output/node_modules/* dist/node_modules")
+   (system "ls -lsha dist/node_modules/melange")))
  (mode
   (promote (until-clean))))
 

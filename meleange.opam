@@ -10,7 +10,7 @@ homepage: "https://github.com/your-username/meleange"
 doc: "https://github.com/your-username/meleange"
 bug-reports: "https://github.com/your-username/meleange/issues"
 depends: [
-  "dune" {>= "3.14" & >= "3.14"}
+  "dune" {>= "3.15" & >= "3.14"}
   "melange" {>= "3.0.0-51"}
   "ocaml" {>= "5.1.1"}
   "opam-check-npm-deps"
