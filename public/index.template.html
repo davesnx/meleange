@@ -3,13 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script type="importmap" src="app.importmap"></script>
+  <script type="importmap"></script>
   <script type="module" src="./src/App.mjs"></script>
   <title>create-melange-app</title>
+  <style>
+    body, html, #root {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+  </style>
 </head>
 
 <body>
-  <div id="root" class="flex h-screen w-screen flex-col items-center bg-gradient-to-b from-[#24273a] to-[#181926]" />
+  <div id="root" style="background-color:darkslategray" />
 </body>
 
 </html>

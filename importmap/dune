@@ -8,4 +8,4 @@
  (name inject)
  (modules inject)
  (public_name meleange.inject)
- (libraries eio eio_main))
+ (libraries eio eio_main lambdasoup))
