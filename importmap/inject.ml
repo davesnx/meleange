@@ -1,25 +1,21 @@
 let () =
-  Eio_main.run @@ fun env ->
-    let cwd = Eio.Stdenv.fs env in
-    (* read app.importmap *)
-    let open Eio.Path in
-    let importmap = Sys.argv.(1) in
-    let index = Sys.argv.(2) in
-    let final_html_file = Sys.argv.(3) in
-    let importmap_file = (cwd / importmap) in
-    Eio.traceln " Visiting %a\n" Eio.Path.pp importmap_file;
-    let import_map_content = Eio.Path.load importmap_file in
-    let index_template_file = (cwd / index) in
-    Eio.traceln " Visiting %a\n" Eio.Path.pp index_template_file;
-    let index_lines = Eio.Path.load index_template_file in
-    Out_channel.with_open_text final_html_file (fun oc ->
-      let lines = String.split_on_char '\n' index_lines in
-      List.iter (fun (line: string) ->
-        (if String.ends_with ~suffix:"<script type=\"importmap\" src=\"app.importmap\"></script>" line then
-          let content = "<script type=\"importmap\">\n" ^ import_map_content ^ "\n</script>" in
-          Out_channel.output_string oc content;
-        else
-          Out_channel.output_string oc line;
-      )
-      ) lines;
-    );
+  Eio_main.run @@ fun base ->
+  let cwd = Eio.Stdenv.fs base in
+  let importmap = Sys.argv.(1) in
+  let template_html_path = Sys.argv.(2) in
+  let final_html_file = Sys.argv.(3) in
+  let importmap_file = Eio.Path.(cwd / importmap) in
+  let import_map_content = Eio.Path.load importmap_file in
+  let index_template_file = Eio.Path.(cwd / template_html_path) in
+  let index_content = Eio.Path.load index_template_file |> Soup.parse in
+  Out_channel.with_open_text final_html_file (fun channel ->
+      match Soup.select_one "script[type='importmap']" index_content with
+      | Some external_inline_import_map ->
+          let inline_import_map =
+            Soup.create_element
+              ~attributes:[ ("type", "importmap") ]
+              ~inner_text:import_map_content "script"
+          in
+          Soup.replace external_inline_import_map inline_import_map;
+          Out_channel.output_string channel (Soup.to_string index_content)
+      | None -> Out_channel.output_string channel (Soup.to_string index_content))
